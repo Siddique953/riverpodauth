@@ -1,8 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:riverpodauth/ui/items/providers/write_item_view_model_provider.dart';
 
@@ -50,8 +49,8 @@ class WriteItemPage extends ConsumerWidget {
             children: [
               GestureDetector(
                 onTap: () async {
-                  final picked =
-                      await ImagePicker().pickImage(source: ImageSource.gallery);
+                  final picked = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
                   if (picked != null) {
                     model.file = File(picked.path);
                   }
@@ -106,7 +105,7 @@ class WriteItemPage extends ConsumerWidget {
                 decoration: const InputDecoration(
                   labelText: "Title",
                 ),
-                onChanged: (v) => model.title = v!,
+                onChanged: (v) => model.title = v,
               ),
               const SizedBox(height: 24),
               TextFormField(
@@ -118,7 +117,7 @@ class WriteItemPage extends ConsumerWidget {
                 decoration: const InputDecoration(
                   labelText: "Description",
                 ),
-                onChanged: (v) => model.description = v!,
+                onChanged: (v) => model.description = v,
               ),
             ],
           ),
